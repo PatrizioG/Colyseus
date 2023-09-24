@@ -1,10 +1,15 @@
 import { Client, Room } from "colyseus.js";
 import Phaser from "phaser";
+import { MyRoomState } from "../server/src/rooms/schema/MyRoomState";
 
 // custom scene class
 export class GameScene extends Phaser.Scene {
   preload() {
     // preload scene
+    this.load.image(
+      "ship_0001",
+      "https://cdn.glitch.global/3e033dcd-d5be-4db4-99e8-086ae90969ec/ship_0001.png"
+    );
   }
 
   async create() {
@@ -14,7 +19,10 @@ export class GameScene extends Phaser.Scene {
     const client = new Client("ws://localhost:2567");
 
     try {
-      const room = await client.joinOrCreate("my_room");
+      const room = await client.joinOrCreate<MyRoomState>("my_room");
+      room.state.players.onAdd((player, sessionId) => {
+        const entity = this.physics.add.image(player.x, player.y, "ship_0001");
+      });
       console.log("Joined successfully!");
     } catch (e) {
       console.error(e);
