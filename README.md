@@ -9,3 +9,6 @@
 
 - Launch `npm run start --prefix .\phaser-client\`
 - Open `http://localhost:1234/`
+
+Source:
+`https://learn.colyseus.io/phaser/1-basic-player-movement#preloading-assets-in-the-demo-scene`
