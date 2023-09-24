@@ -1,0 +1,6 @@
+[24/9/2023, 08:45:30] @colyseus/loadtest
+endpoint: ws://localhost:2567
+roomName: my_room
+numClients: 2
+logLevel: all
+output: D:\Sviluppo\_MULTIPLAYERGAMES\colyseus\server\loadtest.log
